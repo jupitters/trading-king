@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import finnHub from '../apis/finnHub';
-import { BsFillCaretDownFill } from "react-icons/bs";
-import { BsFillCaretUpFill } from "react-icons/bs";
-
+import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 
 const StockList = () => {
     const [stock, setStock] = useState([]);
