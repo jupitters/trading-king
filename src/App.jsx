@@ -1,17 +1,17 @@
 import "./App.css";
 import StockDetailPage from "./pages/StockDetailPage";
 import StockOverviewPage from "./pages/StockOverviewPage";
-import { Routes, Router, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
 
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<StockOverviewPage />} />  
         <Route path="/detail" element={<StockDetailPage />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   )
 }
 
