@@ -1,9 +1,14 @@
 import "./App.css";
+import StockDetailPage from "./pages/StockDetailPage";
+import StockOverviewPage from "./pages/StockOverviewPage";
 
 function App() {
 
   return (
-    <h1 className="mt-5">Hiii</h1>
+    <>
+      <StockDetailPage />
+      <StockOverviewPage />
+    </>
   )
 }
 
