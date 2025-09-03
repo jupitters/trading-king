@@ -17,9 +17,16 @@ const StockList = () => {
                         }
                     })
                 }))
-                console.log(responses)
+                console.log(responses);
+                const data = responses.map((response) => {
+                    return {
+                        data: response.data,
+                        symbol: response.config.params.symbol,
+                    }
+                })
+                console.log(data);
                 if (isMounted){
-                    setStock(responses);
+                    setStock(data);
                 }
             } catch (error) {
                 console.log(error);
