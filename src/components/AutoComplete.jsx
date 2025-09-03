@@ -3,8 +3,10 @@ import finnHub from '../apis/finnHub';
 
 const AutoComplete = () => {
     const [search, setSearch] = useState("");
-
+    const [results, setResults] = useState([]);
+    
     useEffect(()=>{
+        let isMounted = true;
         const fetchData = async () => {
             try {
                 const response = await finnHub.get("/search", {
@@ -12,13 +14,19 @@ const AutoComplete = () => {
                         q: search
                     }
                 })
+                if (isMounted){
+                    setResults(response.data.result);
+                }
             } catch (error) {
                 console.log(error);
             }
         }
         if (search.length > 0){
             fetchData()
+        } else {
+            setResults([]);
         }
+        return () => (isMounted = false)
     },[search])
 
   return (
