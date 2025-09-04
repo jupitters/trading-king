@@ -18,7 +18,7 @@ const StockDetailPage = () => {
         } else {
           oneDay = currentTime - 24*60*60;
         }
-        const response = await finnHub.get("/stocck/candle", {
+        const response = await finnHub.get("/stock/candle", {
           params: {
             symbol,
             from: oneDay,
