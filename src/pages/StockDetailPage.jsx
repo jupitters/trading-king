@@ -70,7 +70,7 @@ const StockDetailPage = () => {
     }
 
     fetchData()
-  },[])
+  },[symbol])
 
   return (
     <div>StockDetailPage of {symbol}</div>
