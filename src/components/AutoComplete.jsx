@@ -41,12 +41,15 @@ const AutoComplete = () => {
   return (
     <div className='w-50 p-5 rounded mx-auto'>
         <div className='form-floating dropdown'>
-            <input style={{backgroundColor: "rgba(145, 158, 171, 0.4"}} id='search' type='text' className='form-control' placeholder='Search Stock' autoComplete='off' onChange={(e) => setSearch(e.target.value)} />
+            <input style={{backgroundColor: "rgba(145, 158, 171, 0.4"}} id='search' type='text' className='form-control' placeholder='Search Stock' autoComplete='off' value={search} onChange={(e) => setSearch(e.target.value)} />
             <label htmlFor="search">Search Stock</label>
             <ul style={{height:"200px", overflowY:"scroll", overflowX:"hidden", cursor:"pointer"}}className={`dropdown-menu ${renderDropdown(results)}`}>
                 {
                         results.map((result) => {
-                                return <li onClick={() => addStock(result.symbol)} key={result.symbol} className='dropdown-item'>{result.description} ({result.symbol})</li>
+                                return <li onClick={() => { 
+                                    addStock(result.symbol); 
+                                    setSearch("");
+                                }} key={result.symbol} className='dropdown-item'>{result.description} ({result.symbol})</li>
                         })
                 }
             </ul>
