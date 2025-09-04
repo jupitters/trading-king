@@ -24,7 +24,7 @@ const StockChart = ({chartData, symbol}) => {
         },
         tooltip: {
             x: {
-                format: "MMM dd HH:MM"
+                format: "MMM dd HH:mm"
             }
         }
     }

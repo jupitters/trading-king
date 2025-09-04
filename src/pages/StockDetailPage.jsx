@@ -59,9 +59,9 @@ const StockDetailPage = () => {
         ])
 
         setChartData({
-        day: formatData(responses[0].data),
-        week: formatData(responses[1].data),
-        year: formatData(responses[2].data),
+        day: formatData(responses[0]),
+        week: formatData(responses[1]),
+        year: formatData(responses[2]),
       })
       } catch (error) {
         console.log(error);
@@ -149,12 +149,12 @@ const StockDetailPage = () => {
 
   return (
     <div>
-      {/* {chartData && (
+      {chartData && (
         <div>
           <StockChart />
         </div>
-      )} */}
-      <StockChart chartData={chartData} symbol={symbol}/>
+      )}
+  
     </div>
   )
 }
