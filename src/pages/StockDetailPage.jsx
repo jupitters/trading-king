@@ -1,9 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import finnHub from '../apis/finnHub';
 
+const formatData = (data) => {
+  return data.t.map((el, index)=>{
+    return{
+      x: el * 1000,
+      y: data.c[index]
+    }
+  })
+}
+
 const StockDetailPage = () => {
   const { symbol } = useParams();
+  const [chartData, setChartData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,35 +32,43 @@ const StockDetailPage = () => {
         const oneYear = 365*24*60*60;
 
         const responses = Promise.all([finnHub.get("/stock/candle", {
-          params: {
-            symbol,
-            from: oneDay,
-            to: currentTime,
-            resolution: 30
-          }
-        }), 
-        finnHub.get("/stock/candle", {
-          params: {
-            symbol,
-            from: oneWeek,
-            to: currentTime,
-            resolution: 30
-          }
-        }),
-        finnHub.get("/stock/candle", {
-          params: {
-            symbol,
-            from: oneYear,
-            to: currentTime,
-            resolution: "W"
-          }
-        })
-      ])
+            params: {
+              symbol,
+              from: oneDay,
+              to: currentTime,
+              resolution: 30
+            }
+          }), 
+          finnHub.get("/stock/candle", {
+            params: {
+              symbol,
+              from: oneWeek,
+              to: currentTime,
+              resolution: 30
+            }
+          }),
+          finnHub.get("/stock/candle", {
+            params: {
+              symbol,
+              from: oneYear,
+              to: currentTime,
+              resolution: "W"
+            }
+          })
+        ])
         console.log(responses);
+
+        setChartData({
+        day: formatData(responses[0].data),
+        week: formatData(responses[1].data),
+        year: formatData(responses[2].data),
+      })
       } catch (error) {
         console.log(error);
       }
+
     }
+
     fetchData()
   },[])
 
