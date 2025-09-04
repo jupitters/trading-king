@@ -8,6 +8,16 @@ const StockList = () => {
     const [stock, setStock] = useState([]);
     const { watchList } = useContext(WatchListContext)
     const navigate = useNavigate();
+    const test = {
+                    "c": 152.34,
+                    "d": -1.25,
+                    "dp": -0.81,
+                    "h": 154.20,
+                    "l": 150.75,
+                    "o": 153.59,
+                    "pc": 153.59,
+                    "t": 1757020000
+                }
 
     const changeColor = (change) => {
         return change > 0?"success":"danger";
@@ -65,6 +75,16 @@ const StockList = () => {
                 </tr>
             </thead>
             <tbody>
+                <tr onClick={() => handleStockSelect("TEST")} style={{cursor:"pointer"}} className='table-row'>
+                                <th scope='row'>{"TEST"}</th>
+                                <td>{test.c}</td>
+                                <td className={`text-${changeColor(test.d)}`}>{test.d} {renderIcon(test.d)}</td>
+                                <td className={`text-${changeColor(test.dp)}`}>{test.dp} {renderIcon(test.d)}</td>
+                                <td>{test.h}</td>
+                                <td>{test.l}</td>
+                                <td>{test.o}</td>
+                                <td>{test.pc}</td>
+                </tr>
                 {
                     stock.map((stockData) => {
                         return (
