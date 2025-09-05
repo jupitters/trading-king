@@ -1,6 +1,24 @@
-import React from 'react'
+import { useEffect } from "react"
+import finnHub from "../apis/finnHub";
 
-const StockData = () => {
+const StockData = ({symbol}) => {
+    let isMounted = true;
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await finnHub.get("stock/profile2", {
+                    params: {
+                        symbol
+                    }
+                })
+                console.log(response)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        
+        fetchData();
+    }, [symbol])
   return (
     <div>StockData</div>
   )
