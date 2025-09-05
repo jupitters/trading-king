@@ -1,8 +1,12 @@
 import { WatchListContext } from "./WatchListContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const WatchListContextProvider = ({ children }) => {
     const [watchList, setWatchList] = useState(["GOOGL", "MSFT"]);
+
+    useEffect(() => {
+        localStorage.setItem("watchlist", watchList);
+    },[watchList])
 
     const addStock = (stock) => {
         if (watchList.indexOf() === -1){
