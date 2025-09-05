@@ -2,10 +2,10 @@ import { WatchListContext } from "./WatchListContext";
 import { useEffect, useState } from "react";
 
 export const WatchListContextProvider = ({ children }) => {
-    const [watchList, setWatchList] = useState(["GOOGL", "MSFT"]);
+    const [watchList, setWatchList] = useState(localStorage.getItem("watchList").split(",") || ["GOOGL", "MSFT"]);
 
     useEffect(() => {
-        localStorage.setItem("watchlist", watchList);
+        localStorage.setItem("watchList", watchList);
     },[watchList])
 
     const addStock = (stock) => {
