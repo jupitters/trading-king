@@ -4,7 +4,11 @@ import Chart from "react-apexcharts"
 const StockChart = ({chartData, symbol}) => {
     const [dateFormat, setDateFormat] = useState("24h")
     const {day,week,year } = chartData
+
+    const color = determineTimeFormat()[determineTimeFormat().length -1].y - determineTimeFormat()[0].y > 0? "#26C281":"#ED3419"
+
     const options = {
+        colors: [color],
         title: {
             text: symbol,
             align: "center",
