@@ -26,7 +26,47 @@ const StockData = ({symbol}) => {
         return () => (isMounted = false);
     }, [symbol])
   return (
-    <div>StockData</div>
+    <div>
+        {StockData && (
+            <div className="row border bg-white rounded shadow-sm -4 mt-5">
+                <div className="col">
+                    <div>
+                        <span className="fw-bold">name:</span>
+                    </div>
+                    <div>
+                        <span className="fw-bold">country:</span>
+                    </div>
+                    <div>
+                        <span className="fw-bold">ticker:</span>
+                    </div>
+                </div>
+                
+                <div className="col">
+                    <div>
+                        <span className="fw-bold">Exchange: </span>
+                    </div>
+                    <div>
+                        <span className="fw-bold">Industry: </span>
+                    </div>
+                    <div>
+                        <span className="fw-bold">IPO: </span>
+                    </div>
+                </div>
+
+                <div className="col">
+                    <div>
+                        <span className="fw-bold">MarketCap:</span>
+                    </div>
+                    <div>
+                        <span className="fw-bold">Shares Outsdtanding:</span>
+                    </div>
+                    <div>
+                        <span className="fw-bold">url:</span>
+                    </div>
+                </div>
+            </div>
+        )}
+    </div>
   )
 }
 
