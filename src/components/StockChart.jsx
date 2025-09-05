@@ -5,6 +5,15 @@ const StockChart = ({chartData, symbol}) => {
     const [dateFormat, setDateFormat] = useState("24h")
     const {day,week,year } = chartData
 
+    const determineTimeFormat = () => {
+        switch(dateFormat){
+            case "24h": return day
+            case "7d": return week
+            case "1y": return year
+            default: return day
+        }
+    }
+
     const color = determineTimeFormat()[determineTimeFormat().length -1].y - determineTimeFormat()[0].y > 0? "#26C281":"#ED3419"
 
     const options = {
@@ -32,15 +41,6 @@ const StockChart = ({chartData, symbol}) => {
             x: {
                 format: "MMM dd HH:mm"
             }
-        }
-    }
-
-    const determineTimeFormat = () => {
-        switch(dateFormat){
-            case "24h": return day
-            case "7d": return week
-            case "1y": return year
-            default: return day
         }
     }
 
