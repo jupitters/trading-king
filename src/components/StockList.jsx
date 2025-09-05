@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const StockList = () => {
     const [stock, setStock] = useState([]);
-    const { watchList } = useContext(WatchListContext)
+    const { watchList, deleteStock } = useContext(WatchListContext)
     const navigate = useNavigate();
     const test = {
                     "c": 152.34,
@@ -96,7 +96,7 @@ const StockList = () => {
                                 <td>{stockData.data.h}</td>
                                 <td>{stockData.data.l}</td>
                                 <td>{stockData.data.o}</td>
-                                <td>{stockData.data.pc} <button className='btn btn-danger btn-sm ml-3 d-inline-block delete-button'>Remove</button> </td>
+                                <td>{stockData.data.pc} <button className='btn btn-danger btn-sm ml-3 d-inline-block delete-button' onClick={() => deleteStock(stockData.symbol)}>Remove</button> </td>
                             </tr>
                         )
                     })
