@@ -19,13 +19,11 @@ const StockDetailPage = () => {
 
   return (
     <div>
-      {chartData && (
         <div>
           <StockChart />
           <StockData symbol={symbol}/>
         </div>
-      )}
-  
+
     </div>
   )
 }
