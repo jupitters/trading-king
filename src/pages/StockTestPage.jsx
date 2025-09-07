@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import finnHub from '../apis/finnHub';
 import StockChart from '../components/StockChart';
 import StockData from '../components/StockData';
 
@@ -15,7 +14,6 @@ const formatData = (data) => {
 
 const StockDetailPage = () => {
   const { symbol } = useParams();
-  const [chartData, setChartData] = useState();
 
   return (
     <div>
